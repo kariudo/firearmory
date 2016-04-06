@@ -1,7 +1,9 @@
 doctype html
-html
+html(ng-app='fireArmory')
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='/lib/angular-material/angular-material.css')
+    base(href='/')
   body
     block content
