@@ -4,13 +4,18 @@ block content
     md-toolbar
         div.md-toolbar-tools
             md-button.md-icon-button
-                md-icon(md-svg-icon="")
+                md-icon(md-svg-icon="menu")
             h2 fireArmory
             span(flex)
-            md-button.md-icon-button
-                md-icon(md-svg-icon="")
     div(flex,layout)
         md-sidenav.md-whiteframe-z2(md-is-locked-open="true")
+            md-list
+                md-list-item(ng-click="showCollection")
+                    md-icon(md-svg-icon="collection")
+                    span(flex) Collection
+                md-list-item(ng-click="showRangeLog")
+                    md-icon(md-svg-icon="range")
+                    span(flex) Range Log
         md-content(ng-view)
     script(src='/lib/angular/angular.js')
     script(src='/lib/angular-route/angular-route.min.js')
