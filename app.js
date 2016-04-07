@@ -7,6 +7,10 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var partials = require('./routes/partials');
+var api = require('./routes/api');
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://firearmory:colt1911@ds049858.mlab.com:49858/theolbucket');
 
 var app = express();
 
@@ -25,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/lib', express.static(__dirname + '/node_modules'));
 app.use('/partials', partials);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
