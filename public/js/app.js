@@ -1,4 +1,4 @@
-angular.module('fireArmory', ['ngRoute', 'ngResource', 'fireArmory.controllers', 'fireArmory.filters', 'fireArmory.services', 'fireArmory.directives']).
+angular.module('fireArmory', ['ngRoute', 'ngResource', 'ngMaterial', 'fireArmory.controllers', 'fireArmory.filters', 'fireArmory.services', 'fireArmory.directives']).
 config(function($routeProvider, $locationProvider, $resourceProvider) {
     $routeProvider.
         when('/', {

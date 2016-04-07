@@ -1,18 +1,26 @@
 extends layout
 
 block content
-  h1= title
-  div(ng-view)
-
-  script(src='/lib/angular/angular.js')
-  script(src='/lib/angular-route/angular-route.min.js')
-  script(src='/lib/angular-aria/angular-aria.min.js')
-  script(src='/lib/angular-animate/angular-animate.min.js')
-  script(src='/lib/angular-messages/angular-messages.min.js')
-  script(src='/lib/angular-material/angular-material.min.js')
-  script(src='/lib/angular-resource/angular-resource.min.js')
-  script(src='js/services.js')
-  script(src='js/controllers.js')
-  script(src='js/filters.js')
-  script(src='js/directives.js')
-  script(src='js/app.js')
+    md-toolbar
+        div.md-toolbar-tools
+            md-button.md-icon-button
+                md-icon(md-svg-icon="")
+            h2 fireArmory
+            span(flex)
+            md-button.md-icon-button
+                md-icon(md-svg-icon="")
+    div(flex,layout)
+        md-sidenav.md-whiteframe-z2(md-is-locked-open="true")
+        md-content(ng-view)
+    script(src='/lib/angular/angular.js')
+    script(src='/lib/angular-route/angular-route.min.js')
+    script(src='/lib/angular-aria/angular-aria.min.js')
+    script(src='/lib/angular-animate/angular-animate.min.js')
+    script(src='/lib/angular-messages/angular-messages.min.js')
+    script(src='/lib/angular-material/angular-material.min.js')
+    script(src='/lib/angular-resource/angular-resource.min.js')
+    script(src='js/services.js')
+    script(src='js/controllers.js')
+    script(src='js/filters.js')
+    script(src='js/directives.js')
+    script(src='js/app.js')
