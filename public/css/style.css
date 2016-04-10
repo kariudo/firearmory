@@ -1,9 +1,13 @@
 .logo-box {
-  width: 100px;
-  height: 100px;
-  margin-right: 50px;
+    width: 100px;
+    height: 100px;
+    margin-right: 50px;
 }
 
 .logo {
-  width: 100%;
+    width: 100%;
+}
+
+.fab-fix svg {
+    transform: translate3d(0, -25%, 0);
 }

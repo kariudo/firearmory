@@ -1,5 +1,5 @@
-div(layout-padding)
-    md-card(ng-repeat="gun in vm.guns", layout-padding, ng-controller="GunController as ctrl")
+div(layout-padding, ng-controller="GunController as gunCtrl")
+    md-card(ng-repeat="gun in gunCtrl.guns", layout-padding)
         div(layout="row")
             div.logo-box
                 img.logo(ng-src="img/logos/{{gun.make | lowercase}}.svg")
@@ -56,15 +56,17 @@ div(layout-padding)
                     md-icon(md-svg-icon="more")
                 md-menu-content
                     md-menu-item
-                        md-button(ng-click="ctrl.editGun(gun)")
+                        md-button(ng-click="gunCtrl.editGun(gun)")
                             md-icon(md-svg-icon="edit")
                             span Edit
                     md-menu-divider
                     md-menu-item
-                        md-button(ng-click="ctrl.deleteGun(gun, $event)")
+                        md-button(ng-click="gunCtrl.deleteGun(gun, $event)")
                             md-icon(md-svg-icon="delete")
                             span Delete
         md-card-action(layout, layout-align="end center")
             div(ng-if="gun._editMode")
-                md-button(ng-click="ctrl.cancelEdit(gun)") Cancel
-                md-button.md-primary(ng-click="ctrl.saveGun(gun)") Save
+                md-button(ng-click="gunCtrl.cancelEdit(gun)") Cancel
+                md-button.md-primary(ng-click="gunCtrl.saveGun(gun)") Save
+    md-button.md-fab.md-fab-bottom-right.md-accent(ng-click="gunCtrl.add()")
+        md-icon.fab-fix(md-svg-icon="add")
