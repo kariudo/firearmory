@@ -1,0 +1,73 @@
+div(layout-padding)
+    md-card(ng-repeat="gun in gunCtrl.guns", layout-padding)
+        a(id="{{ gun._id }}")
+        div(layout="row")
+            div.logo-box
+                img.logo(ng-src="img/logos/{{gun.make | lowercase}}.svg")
+            div(layout="column", flex, ng-if="!gun._editMode")
+                div(layout="row")
+                    div(layout-padding, layout="column")
+                        span.md-caption Make
+                        span(ng-bind="gun.make")
+                    div(layout-padding, flex, layout="column")
+                        span.md-caption  Model
+                        span(ng-bind="gun.model")
+                    div(layout-padding, layout="column")
+                        span.md-caption  Serial
+                        span(ng-bind="gun.serial")
+                    div(layout-padding, layout="column")
+                        span.md-caption  Year
+                        span(ng-bind="gun.year")
+                div(layout="row")
+                    div(layout-padding, layout="column")
+                        span.md-caption Sights/Optics
+                        span(ng-bind="gun.optics")
+                    div(layout-padding, layout="column", flex, ng-if="gun.modifications")
+                        span.md-caption Modifications
+                        span(ng-bind="gun.modifications")
+                    div(layout-padding, layout="column", flex, ng-if="gun.comments")
+                        span.md-caption Comments
+                        span(ng-bind="gun.comments")
+            div(layout="column", flex, ng-if="gun._editMode")
+                div(layout="row")
+                    md-input-container
+                        label Make
+                        input(ng-model="gun.make")
+                    md-input-container(flex)
+                        label Model
+                        input(ng-model="gun.model")
+                    md-input-container
+                        label Serial
+                        input(ng-model="gun.serial")
+                    md-input-container
+                        label Year
+                        input(ng-model="gun.year",maxlength="4",minlength="4")
+                div(layout="row")
+                    md-input-container
+                        label Optics
+                        input(ng-model="gun.optics")
+                    md-input-container(flex)
+                        label Modifications
+                        textarea(ng-model="gun.modifications")
+                    md-input-container(flex)
+                        label Comments
+                        textarea(ng-model="gun.comments")
+            md-menu(md-position-mode="target-right target")
+                md-button.md-icon-button(ng-click="$mdOpenMenu($event)")
+                    md-icon(md-svg-icon="more")
+                md-menu-content
+                    md-menu-item
+                        md-button(ng-click="gunCtrl.editGun(gun)")
+                            md-icon(md-svg-icon="edit")
+                            span Edit
+                    md-menu-divider
+                    md-menu-item
+                        md-button(ng-click="gunCtrl.deleteGun(gun, $event)")
+                            md-icon(md-svg-icon="delete")
+                            span Delete
+        md-card-action(layout, layout-align="end center")
+            div(ng-if="gun._editMode")
+                md-button(ng-click="gunCtrl.cancelEdit(gun)") Cancel
+                md-button.md-primary(ng-click="gunCtrl.saveGun(gun)") Save
+    md-button.md-fab.md-fab-bottom-right.md-accent(ng-click="gunCtrl.add()")
+        md-icon.fab-fix(md-svg-icon="add")

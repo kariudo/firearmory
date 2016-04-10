@@ -10,10 +10,10 @@ block content
     div(flex,layout)
         md-sidenav.md-whiteframe-z2(md-is-locked-open="showMenu")
             md-list
-                md-list-item(ng-click="showCollection")
+                md-list-item(href="/guns")
                     md-icon(md-svg-icon="collection")
                     span(flex) Collection
-                md-list-item(ng-click="showRangeLog")
+                md-list-item(href="/rangeLog")
                     md-icon(md-svg-icon="range")
                     span(flex) Range Log
         md-content(ng-view, flex)

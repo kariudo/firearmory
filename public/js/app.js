@@ -6,8 +6,13 @@ config(function($routeProvider, $locationProvider, $resourceProvider, $mdIconPro
             controller: 'IndexController',
             controllerAs: 'vm'
         }).
+        when('/guns', {
+            templateUrl: 'partials/guns',
+            controller: 'GunController',
+            controllerAs: 'gunCtrl'
+        }).
         otherwise({
-            redirectTo: '/'
+            redirectTo: '/guns'
         });
     $locationProvider.html5Mode(true);
     $resourceProvider.defaults.stripTrailingSlashes = false;

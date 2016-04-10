@@ -2,7 +2,7 @@ angular.module('fireArmory.controllers',[])
     .controller('IndexController', function () {
         // var vm = this;
     })
-    .controller('GunController', function($scope, API, $log, $mdDialog) {
+    .controller('GunController', function($scope, API, $log, $location, $mdDialog, $anchorScroll) {
         var vm = this;
 
         vm.guns = API.Gun.query();
@@ -70,6 +70,11 @@ angular.module('fireArmory.controllers',[])
             $log.debug('Adding new gun');
             var gun = new API.Gun();
             gun.$save();
+            vm.guns.push(gun);
+            var oldHash = $location.hash();
+            $location.hash(gun._id);
+            $anchorScroll();
+            $location.hash(oldHash);
             $log.debug('New gun:', gun);
         };
     });
