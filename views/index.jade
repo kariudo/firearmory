@@ -3,12 +3,12 @@ extends layout
 block content
     md-toolbar
         div.md-toolbar-tools
-            md-button.md-icon-button
+            md-button.md-icon-button(ng-click="showMenu = !showMenu")
                 md-icon(md-svg-icon="menu")
             h2 fireArmory
             span(flex)
     div(flex,layout)
-        md-sidenav.md-whiteframe-z2(md-is-locked-open="true")
+        md-sidenav.md-whiteframe-z2(md-is-locked-open="showMenu")
             md-list
                 md-list-item(ng-click="showCollection")
                     md-icon(md-svg-icon="collection")
@@ -16,7 +16,7 @@ block content
                 md-list-item(ng-click="showRangeLog")
                     md-icon(md-svg-icon="range")
                     span(flex) Range Log
-        md-content(ng-view)
+        md-content(ng-view, flex)
     script(src='/lib/angular/angular.js')
     script(src='/lib/angular-route/angular-route.min.js')
     script(src='/lib/angular-aria/angular-aria.min.js')

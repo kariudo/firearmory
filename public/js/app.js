@@ -14,6 +14,7 @@ config(function($routeProvider, $locationProvider, $resourceProvider, $mdIconPro
     $mdIconProvider.icon('menu', '/img/ic_menu_24px.svg', 24);
     $mdIconProvider.icon('collection', '/img/ic_book_open_24px.svg', 24);
     $mdIconProvider.icon('range', '/img/ic_target_24px.svg', 24);
+    $mdIconProvider.icon('more', '/img/ic_more_vert_24px.svg', 24);
     $mdThemingProvider.theme('default')
         .primaryPalette('deep-purple')
         .accentPalette('lime');
