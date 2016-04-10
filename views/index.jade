@@ -3,7 +3,7 @@ extends layout
 block content
     md-toolbar
         div.md-toolbar-tools
-            md-button.md-icon-button(ng-click="showMenu = !showMenu")
+            md-button.md-icon-button(aria-label="Menu", ng-click="showMenu = !showMenu")
                 md-icon(md-svg-icon="menu")
             h2 fireArmory
             span(flex)

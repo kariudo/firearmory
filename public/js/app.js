@@ -17,7 +17,8 @@ config(function($routeProvider, $locationProvider, $resourceProvider, $mdIconPro
     $mdIconProvider.icon('range', '/img/ic_target_24px.svg', 24);
     $mdIconProvider.icon('more', '/img/ic_more_vert_24px.svg', 24);
     $mdIconProvider.icon('edit', '/img/ic_mode_edit_24px.svg', 24);
-    
+    $mdIconProvider.icon('delete', '/img/ic_delete_24px.svg', 24);
+
     $mdThemingProvider.theme('default')
         .primaryPalette('deep-purple')
         .accentPalette('lime');

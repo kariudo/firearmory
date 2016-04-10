@@ -2,7 +2,7 @@ div(layout-padding)
     md-card(ng-repeat="gun in vm.guns", layout-padding, ng-controller="GunController as ctrl")
         div(layout="row")
             div.logo-box
-                img.logo(src="img/logos/{{gun.make | lowercase}}.svg")
+                img.logo(ng-src="img/logos/{{gun.make | lowercase}}.svg")
             div(layout="column", flex, ng-if="!gun._editMode")
                 div(layout="row")
                     div(layout-padding, layout="column")
@@ -51,15 +51,20 @@ div(layout-padding)
                     md-input-container(flex)
                         label Comments
                         textarea(ng-model="gun.comments")
-            md-menu
+            md-menu(md-position-mode="target-right target")
                 md-button.md-icon-button(ng-click="$mdOpenMenu($event)")
                     md-icon(md-svg-icon="more")
                 md-menu-content
                     md-menu-item
-                        md-button(ng-click="gun._editMode = true") Edit
+                        md-button(ng-click="ctrl.editGun(gun)")
                             md-icon(md-svg-icon="edit")
+                            span Edit
+                    md-menu-divider
+                    md-menu-item
+                        md-button(ng-click="ctrl.deleteGun(gun, $event)")
+                            md-icon(md-svg-icon="delete")
+                            span Delete
         md-card-action(layout, layout-align="end center")
             div(ng-if="gun._editMode")
-                md-button(ng-click="ctrl.deleteGun(gun)") Delete
-                md-button(ng-click="gun._editMode = false") Cancel
+                md-button(ng-click="ctrl.cancelEdit(gun)") Cancel
                 md-button.md-primary(ng-click="ctrl.saveGun(gun)") Save
