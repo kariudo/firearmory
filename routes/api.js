@@ -4,11 +4,13 @@ var Gun = require('../models/gun');
 
 router.route('/guns')
     .post(function (req, res){
-        Gun(req.body).save(function(err) {
+        var gun = new Gun(req.body);
+
+        gun.save(function(err) {
             if (err)
                 res.send(err);
 
-            res.json({ message: 'Gun created!' });
+            res.json(gun);
         });
     })
     .get(function (req, res) {

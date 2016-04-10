@@ -1,12 +1,12 @@
 angular.module('fireArmory.controllers',[])
-    .controller('IndexController', function ($scope, API) {
-        var vm = this;
-        vm.guns = API.Gun.query();
-        
-
+    .controller('IndexController', function () {
+        // var vm = this;
     })
     .controller('GunController', function($scope, API, $log, $mdDialog) {
         var vm = this;
+
+        vm.guns = API.Gun.query();
+
 
         /**
          * Save changes to the gun
@@ -37,7 +37,8 @@ angular.module('fireArmory.controllers',[])
                 .cancel('Cancel');
             $mdDialog.show(confirm).then(function() {
                 $log.debug('Delete confirmed.');
-                API.Gun.delete(gun).$promise.then(function(){
+                gun.$delete().then(function(){
+                    vm.guns.splice(vm.guns.indexOf(gun,1));
                     $log.debug('Gun deleted.');
                 });
             }, function() {
@@ -63,5 +64,12 @@ angular.module('fireArmory.controllers',[])
             angular.copy(gun._previousValues, gun);
             delete gun._previousValues;
             $log.debug('Cancel edit', gun);
+        };
+
+        vm.add = function() {
+            $log.debug('Adding new gun');
+            var gun = new API.Gun();
+            gun.$save();
+            $log.debug('New gun:', gun);
         };
     });
