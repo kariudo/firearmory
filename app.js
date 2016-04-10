@@ -31,7 +31,7 @@ app.use('/lib', express.static(__dirname + '/node_modules'));
 app.use('/partials', partials);
 app.use('/api', api);
 
-app.all('/*', function(req, res, next) {
+app.all('/*', function(req, res) {
     // Just send the index for other files to support HTML5Mode
     res.render('index', { title: 'fireArmory' });
 });
