@@ -19,7 +19,7 @@ div
                             span.md-caption  Year
                             span(ng-bind="gun.year")
                     div(layout="row")
-                        div(layout-padding, layout="column")
+                        div(layout-padding, layout="column", ng-if="gun.optics")
                             span.md-caption Sights/Optics
                             span(ng-bind="gun.optics")
                         div(layout-padding, layout="column", flex, ng-if="gun.modifications")
