@@ -2,7 +2,7 @@ div
     md-content
         md-card(ng-repeat="gun in gunCtrl.guns", layout-padding)
             div(layout="row")
-                div(layout="column", layout-align="center center")
+                div(layout="column", layout-align="center center", layout-padding)
                     div.logo-box
                         img.logo(ng-src="img/logos/{{gun.make | lowercase}}.svg", flex)
                 div(layout="column", flex, ng-if="!gun._editMode")
