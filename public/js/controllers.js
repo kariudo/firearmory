@@ -49,8 +49,10 @@ angular.module('fireArmory.controllers',[])
         /**
          * Enable edit mode of specified gun
          * @param gun
+         * @param deleteOnCancel
          */
-        vm.editGun = function(gun) {
+        vm.editGun = function(gun, deleteOnCancel) {
+            gun._deleteOnCancel = !!deleteOnCancel;
             gun._previousValues = angular.copy(gun);
             gun._editMode = true;
             $log.debug('Edit gun', gun);
@@ -64,6 +66,13 @@ angular.module('fireArmory.controllers',[])
             angular.copy(gun._previousValues, gun);
             delete gun._previousValues;
             $log.debug('Cancel edit', gun);
+            if(gun._deleteOnCancel) {
+                $log.debug('Deleting blank gun.');
+                gun.$delete().then(function(){
+                    vm.guns.splice(vm.guns.indexOf(gun),1);
+                    $log.debug('Gun deleted.');
+                });
+            }
         };
 
         vm.add = function() {
@@ -71,6 +80,7 @@ angular.module('fireArmory.controllers',[])
             var gun = new API.Gun();
             gun.$save().then(function(){
                 vm.guns.splice(0, 0, gun);
+                vm.editGun(gun, true);
                 var oldHash = $location.hash();
                 $location.hash('top');
                 $anchorScroll();
