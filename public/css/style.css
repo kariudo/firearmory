@@ -10,3 +10,7 @@
 .md-fab-bottom-right {
     position: fixed !important;
 }
+
+.no-outline:focus {
+    outline: none;
+}

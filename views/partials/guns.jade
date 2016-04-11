@@ -5,7 +5,7 @@ div
                 div(layout="column", layout-align="center center", layout-padding)
                     div.logo-box
                         img.logo(ng-src="img/logos/{{gun.make | lowercase}}.svg", flex)
-                div(layout="column", flex, ng-if="!gun._editMode")
+                div.no-outline(layout="column", flex, ng-if="!gun._editMode", ng-dblclick="gunCtrl.editGun(gun)")
                     div(layout="row")
                         div(layout-padding, layout="column")
                             span.md-caption Make
