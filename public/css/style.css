@@ -8,6 +8,6 @@
     width: 100%;
 }
 
-.fab-fix svg {
-    transform: translate3d(0, -25%, 0);
+.md-fab-bottom-right {
+    position: fixed !important;
 }
