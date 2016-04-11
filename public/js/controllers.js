@@ -38,7 +38,7 @@ angular.module('fireArmory.controllers',[])
             $mdDialog.show(confirm).then(function() {
                 $log.debug('Delete confirmed.');
                 gun.$delete().then(function(){
-                    vm.guns.splice(vm.guns.indexOf(gun,1));
+                    vm.guns.splice(vm.guns.indexOf(gun),1);
                     $log.debug('Gun deleted.');
                 });
             }, function() {
@@ -69,12 +69,13 @@ angular.module('fireArmory.controllers',[])
         vm.add = function() {
             $log.debug('Adding new gun');
             var gun = new API.Gun();
-            gun.$save();
-            vm.guns.push(gun);
-            var oldHash = $location.hash();
-            $location.hash(gun._id);
-            $anchorScroll();
-            $location.hash(oldHash);
-            $log.debug('New gun:', gun);
+            gun.$save().then(function(){
+                vm.guns.splice(0, 0, gun);
+                var oldHash = $location.hash();
+                $location.hash('top');
+                $anchorScroll();
+                $location.hash(oldHash);
+                $log.debug('New gun:', gun);
+            });
         };
     });
