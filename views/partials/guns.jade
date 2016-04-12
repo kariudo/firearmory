@@ -1,5 +1,10 @@
-div
-    md-content
+md-content(flex)
+    md-toolbar.md-hue-1(layout)
+        .md-toolbar-tools
+            md-button(aria-label='owned') Owned
+            md-button(aria-label='sold') Sold
+            md-button(aria-label='all') All
+    md-content(layout-align)
         md-card(ng-repeat="gun in gunCtrl.guns", layout-padding)
             div(layout="row")
                 div(layout="column", layout-align="center center", layout-padding)
@@ -70,5 +75,6 @@ div
                 div(ng-if="gun._editMode")
                     md-button(ng-click="gunCtrl.cancelEdit(gun)") Cancel
                     md-button.md-primary(ng-click="gunCtrl.saveGun(gun)") Save
-    md-button.md-fab.md-fab-bottom-right.md-accent(ng-click="gunCtrl.add()")
+        div.bottom-fab-spacer
+    md-button.md-fab.md-fab-bottom-right.md-accent.md-focused(ng-click="gunCtrl.add()")
         md-icon.fab-fix(md-svg-icon="add")

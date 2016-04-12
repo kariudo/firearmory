@@ -1,4 +1,11 @@
 angular.module('fireArmory.controllers',[])
+    .controller('AppController', function() {
+        var vm = this;
+        vm.sideNavOpen = false;
+        vm.toggleSideNav = function() {
+            vm.sideNavOpen = !vm.sideNavOpen;
+        };
+    })
     .controller('IndexController', function () {
         // var vm = this;
     })

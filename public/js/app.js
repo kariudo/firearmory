@@ -6,13 +6,13 @@ config(function($routeProvider, $locationProvider, $resourceProvider, $mdIconPro
             controller: 'IndexController',
             controllerAs: 'vm'
         }).
-        when('/guns', {
+        when('/collection', {
             templateUrl: 'partials/guns',
             controller: 'GunController',
             controllerAs: 'gunCtrl'
         }).
         otherwise({
-            redirectTo: '/guns'
+            redirectTo: '/'
         });
     $locationProvider.html5Mode(true);
     $resourceProvider.defaults.stripTrailingSlashes = false;
@@ -27,5 +27,5 @@ config(function($routeProvider, $locationProvider, $resourceProvider, $mdIconPro
 
     $mdThemingProvider.theme('default')
         .primaryPalette('brown')
-        .accentPalette('light-green');
+        .accentPalette('brown');
 });

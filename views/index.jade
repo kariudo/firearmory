@@ -1,22 +1,25 @@
 extends layout
 
 block content
-    md-toolbar
-        div.md-toolbar-tools
-            md-button.md-icon-button(aria-label="Menu", ng-click="showMenu = !showMenu")
-                md-icon(md-svg-icon="menu")
-            h2 fireArmory
-            span(flex)
-    div(flex,layout)
-        md-sidenav.md-whiteframe-z2(md-is-locked-open="showMenu")
+    div(layout="row")
+        md-sidenav.md-whiteframe-z2(layout="column", md-is-locked-open="vm.sideNavOpen")
+            md-toolbar.md-tall
+                // TODO: User info here
             md-list
-                md-list-item(href="/guns")
+                md-list-item(href="/collection")
                     md-icon(md-svg-icon="collection")
                     span(flex) Collection
                 md-list-item(href="/rangeLog")
                     md-icon(md-svg-icon="range")
                     span(flex) Range Log
-        section(ng-view, flex)
+        div.relative(layout="column", layout-fill, role="main")
+            md-toolbar
+                div.md-toolbar-tools
+                    md-button.md-icon-button(aria-label="Menu", ng-click="vm.toggleSideNav()")
+                        md-icon(md-svg-icon="menu")
+                    h2 fireArmory
+                    span(flex)
+            md-content(ng-view, flex, md-scroll-y)
     script(src='/lib/angular/angular.js')
     script(src='/lib/angular-route/angular-route.min.js')
     script(src='/lib/angular-aria/angular-aria.min.js')

@@ -14,3 +14,7 @@
 .no-outline:focus {
     outline: none;
 }
+
+.bottom-fab-spacer {
+    height: 100px;
+}

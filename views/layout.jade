@@ -6,5 +6,5 @@ html(ng-app='fireArmory')
     link(rel='stylesheet', href='/lib/angular-material/angular-material.css')
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto')
     base(href='/')
-  body(layout="column")
+  body(layout="column", layout-fill, ng-controller="AppController as vm")
     block content
