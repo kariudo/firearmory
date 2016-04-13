@@ -26,6 +26,6 @@ config(function($routeProvider, $locationProvider, $resourceProvider, $mdIconPro
     $mdIconProvider.icon('add', '/img/ic_add_24px.svg', 24);
 
     $mdThemingProvider.theme('default')
-        .primaryPalette('brown')
-        .accentPalette('brown');
+        .primaryPalette('blue-grey')
+        .accentPalette('teal');
 });
