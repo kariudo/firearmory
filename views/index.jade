@@ -12,14 +12,14 @@ block content
                 md-list-item(href="/rangeLog")
                     md-icon(md-svg-icon="range")
                     span(flex) Range Log
-        div.relative(layout="column", layout-fill, role="main")
+        div.relative(layout="column", flex, role="main")
             md-toolbar
                 div.md-toolbar-tools
                     md-button.md-icon-button(aria-label="Menu", ng-click="vm.toggleSideNav()")
                         md-icon(md-svg-icon="menu")
                     h2 fireArmory
                     span(flex)
-            md-content(ng-view, flex, md-scroll-y)
+            md-content(ng-view, flex)
     script(src='/lib/angular/angular.js')
     script(src='/lib/angular-route/angular-route.min.js')
     script(src='/lib/angular-aria/angular-aria.min.js')
