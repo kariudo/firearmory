@@ -4,7 +4,7 @@ md-content(flex)
         md-tab#sold Sold
         md-tab#all All
     div#cards(layout-padding, flex="80", flex-offset="10")
-        md-card(ng-repeat="gun in gunCtrl.guns", layout-padding)
+        md-card(ng-repeat="gun in gunCtrl.guns | filter: gunCtrl.getFilter", layout-padding)
             div(layout="row")
                 div(layout="column", layout-align="center center", layout-padding)
                     div.logo-box

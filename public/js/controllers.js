@@ -12,6 +12,7 @@ angular.module('fireArmory.controllers',[])
     .controller('GunController', function($scope, API, $log, $location, $mdDialog, $anchorScroll) {
         var vm = this;
 
+        vm.filter = 0;
         vm.guns = API.Gun.query();
 
 
@@ -82,6 +83,9 @@ angular.module('fireArmory.controllers',[])
             }
         };
 
+        /**
+         * Add a new gun
+         */
         vm.add = function() {
             $log.debug('Adding new gun');
             var gun = new API.Gun();
@@ -94,5 +98,16 @@ angular.module('fireArmory.controllers',[])
                 $location.hash(oldHash);
                 $log.debug('New gun:', gun);
             });
+        };
+        
+        vm.getFilter = function(gun) {
+            switch(vm.filter) {
+            case 0: // owned
+                return !(gun.disposition && gun.disposition.disposed);
+            case 1: // sold
+                return gun.disposition && gun.disposition.disposed;
+            case 2: // all
+                return true;
+            }
         };
     });
