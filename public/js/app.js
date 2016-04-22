@@ -17,6 +17,7 @@ config(function($routeProvider, $locationProvider, $resourceProvider, $mdIconPro
     $locationProvider.html5Mode(true);
     $resourceProvider.defaults.stripTrailingSlashes = false;
 
+    $mdIconProvider.icon('logo', '/img/crude_logo.svg', 64);
     $mdIconProvider.icon('menu', '/img/ic_menu_24px.svg', 24);
     $mdIconProvider.icon('collection', '/img/ic_book_open_24px.svg', 24);
     $mdIconProvider.icon('range', '/img/ic_target_24px.svg', 24);

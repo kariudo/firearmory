@@ -18,3 +18,12 @@
 .bottom-fab-spacer {
     height: 100px;
 }
+
+.size-64 {
+    height: 64px;
+    width: 64px;
+}
+
+.half-black {
+    color: rgba(0,0,0,0.5) !important;
+}
