@@ -66,7 +66,7 @@ router.route('/guns/:gun_id')
 /* Upload */
 var upload = multer({dest: 'uploads/'});
 
-router.post('/upload', upload.any(), function(req, res){
+router.post('/upload/:parentId?', upload.any(), function(req, res){
     var dirname = require('path').dirname(__dirname);
     var conn = mongoose.connection;
     Grid.mongo = mongoose.mongo;
@@ -80,7 +80,8 @@ router.post('/upload', upload.any(), function(req, res){
         var writeStream = gfs.createWriteStream({
             filename: upload.filename,
             metadata: {
-                mime: upload.mimetype
+                mime: upload.mimetype,
+                parent: req.params.parentId
             }
         });
         read_stream.pipe(writeStream);
@@ -105,6 +106,25 @@ router.get('/file/:id',function(req,res){
             res.set('Content-Type', files[0].metadata.mime);
             var read_stream = gfs.createReadStream({filename: file_id});
             read_stream.pipe(res);
+        } else {
+            res.json('File Not Found');
+        }
+    });
+});
+
+// file by parent id
+router.get('/files/:id',function(req,res){
+    var parent_id = req.params.id;
+    var conn = mongoose.connection;
+    Grid.mongo = mongoose.mongo;
+    var gfs = Grid(conn.db);
+
+    gfs.files.find({'metadata.parent':parent_id}).toArray(function (err, files) {
+        if (err) {
+            res.json(err);
+        }
+        if (files.length > 0) {
+            res.json(files);
         } else {
             res.json('File Not Found');
         }
