@@ -31,6 +31,9 @@ app.use('/lib', express.static(__dirname + '/node_modules'));
 app.use('/partials', partials);
 app.use('/api', api);
 
+// Multi-part form uploads
+app.use('/uploads', express.static(__dirname + '/uploads'));
+
 app.all('/*', function(req, res) {
     // Just send the index for other files to support HTML5Mode
     res.render('index', { title: 'fireArmory' });
